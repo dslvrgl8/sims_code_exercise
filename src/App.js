@@ -3,6 +3,7 @@ import './App.css';
 import Navigation from './pages/Navigation'
 import './pages/Pie.css';
 import './pages/Line.css';
+import './pages/Scatterplot.css';
 // -------------------------------------
 
 function App() {
