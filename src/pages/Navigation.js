@@ -3,6 +3,7 @@ import './Navigation.css';
 import Pie from './Pie';
 import Scatterplot from './Scatterplot';
 import Line from './Line';
+import Bar from './Bar';
 
 function Navigation() {
 
@@ -11,6 +12,7 @@ function Navigation() {
   const [showPieButton] = useState(true);
   const [showScatterplotButton] = useState(true);
   const [showLineButton] = useState(true);
+  const [showBarButton] = useState(true);
 //   ----------------------------------
 
   const handleButtonClick = (chart) => {
@@ -21,7 +23,7 @@ function Navigation() {
     <div className="navigation">
       <div>
 
-	  
+
         {/* Buttons to switch to different graphs */}
         {showPieButton && (
           <button onClick={() => handleButtonClick('Pie')}>Pie Graph</button>
@@ -32,6 +34,9 @@ function Navigation() {
         {showLineButton && (
           <button onClick={() => handleButtonClick('Line')}>Line Graph</button>
         )}
+		{showBarButton && (
+			<button onClick={() => handleButtonClick('Bar')}>Bar Graph</button>
+		  )}
       </div>
 
 
@@ -39,6 +44,7 @@ function Navigation() {
       {activeChart === 'Pie' && <Pie />}
       {activeChart === 'Scatterplot' && <Scatterplot />}
       {activeChart === 'Line' && <Line />}
+	  {activeChart === 'Bar' && <Bar />}
     </div>
   );
 }
