@@ -1,6 +1,10 @@
 .App {
   text-align: center;
+  font-family: 'HomeFont';
+  color: antiquewhite;
+
 }
+
 
 .App-logo {
   height: 40vmin;

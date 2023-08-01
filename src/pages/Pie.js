@@ -36,15 +36,16 @@ function Pie1 () {
 	  const combinedData = calculateCollectedValues(groupedData)
 
     return (
-		<div className="pie">
-			<PieChart width={400} height={400}>
+		<div className="Pie">
+		
+			<PieChart width={500} height={300}>
 				<Pie
 				dataKey="value"
 				isAnimationActive={false}
 				data={combinedData}
 				cx="50%"
 				cy="50%"
-				outerRadius={80}
+				outerRadius={120}
 				fill="#8884d8"
 				label
 				/>

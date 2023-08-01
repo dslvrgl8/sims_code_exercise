@@ -33,11 +33,11 @@ function Line1() {
 
 	  const groupedData = groupDataByCloumnName(data);
 	  const combinedData = calculateCollectedValues(groupedData)
-	  
+
     return (
 		<div className="line">
 			<LineChart
-				width={500}
+				width={513}
 				height={300}
 				data={combinedData}
 				margin={{

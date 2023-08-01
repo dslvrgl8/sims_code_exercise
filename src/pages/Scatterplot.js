@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Tooltip, BarChart, XAxis, YAxis, CartesianGrid, Legend, Bar } from 'recharts';
+import { Tooltip, ScatterChart, XAxis, YAxis, CartesianGrid, Scatter, Legend } from 'recharts';
 
 function groupDataByCloumnName(data) {
 	const groupedData = {};
@@ -39,24 +39,23 @@ function Scatterplot1() {
 
     return (
 		<div className="scatterplot">
-			<BarChart
-				width={500}
-				height={300}
-				data={combinedData}
-				margin={{
-				top: 5,
-				right: 30,
-				left: 20,
-				bottom: 5,
-				}}
-				>
-				<CartesianGrid strokeDasharray="3 3" />
-				<XAxis dataKey="name" />
-				<YAxis />
-				<Tooltip />
-				<Legend />
-				<Bar dataKey="value" fill="#8884d8" />
-			</BarChart>		  
+		<ScatterChart
+        width={500}
+        height={300}
+        margin={{
+          top: 5,
+          right: 30,
+          left: 20,
+          bottom: 5,
+        }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Scatter data={data} fill="#8884d8" line shape="cross" dataKey="value" />
+      </ScatterChart>	  
 		</div>
 	)
 }
