@@ -1,6 +1,10 @@
+// Imports
 import React from 'react'
 import './Line.css'
 import { Tooltip, LineChart, XAxis, YAxis, CartesianGrid, Line } from 'recharts';
+// --------------------------------------------------------------------------------
+
+// Functions for setting up up new entries on the graph and adding to already existing data sources-----
 
 function groupDataByCloumnName(data) {
 	const groupedData = {};
@@ -23,21 +27,29 @@ function calculateCollectedValues(groupedData) {
 	}
 	return collectedData
 }
+// --------------------------------------------------
 
 function Line1() {
-	const data = [
-		{name: "Facebook", value: 20000000},
-		{name: "Instagram", value: 60000000},
-		{name: "Twitter", value: 15000000},
-	  ];
 
+	// Data for graph----------------------------
+	const data = [
+		{name: "Nintendo", value: 43},
+		{name: "Microsoft", value: 23},
+		{name: "Sony", value: 30},
+	  ];
+	//   --------------------------------------
+
+	//   Values for graph--------------------------
 	  const groupedData = groupDataByCloumnName(data);
 	  const combinedData = calculateCollectedValues(groupedData)
-
+	// ---------------------------------------------
     return (
+
+		// Graph styling/data connection------------------------
+
 		<div className="line">
 			<LineChart
-				width={513}
+				width={510}
 				height={300}
 				data={combinedData}
 				margin={{
@@ -56,6 +68,7 @@ function Line1() {
 					  
 		</div>
 	);
+		// ------------------------------------------------------
 };
 		  
 export default Line1

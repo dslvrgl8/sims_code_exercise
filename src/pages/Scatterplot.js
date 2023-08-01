@@ -1,6 +1,11 @@
+// Imports----------------------------------------
 import React from 'react'
 
 import { Tooltip, ScatterChart, XAxis, YAxis, CartesianGrid, Scatter, Legend } from 'recharts';
+// -----------------------------------------------
+
+
+// Functions for setting up up new entries on the graph and adding to already existing data sources-----
 
 function groupDataByCloumnName(data) {
 	const groupedData = {};
@@ -24,23 +29,38 @@ function calculateCollectedValues(groupedData) {
 	return collectedData
 }
 
-function Scatterplot1() {
-	const data = [
-		{name: "Facebook", value: 20000000},
-		{name: "Facebook", value: 20000000},
-		{name: "Instagram", value: 60000000},
-		{name: "Twitter", value: 15000000},
-		{name: "X", value: 15000000},
+// --------------------------------------------------
 
+
+function Scatterplot1() {
+
+	// Data for graph----------------------------
+
+	const data = [
+		{name: "Sony", value: 30},
+		{name: "Microsoft", value: 23},
+		{name: "Nintendo", value: 43},
+		{name: "Nintendo", value: 100},
 	  ]
 
+	//   --------------------------------------
+
+
+	//   Values for graph--------------------------
+	  
 	  const groupedData = groupDataByCloumnName(data);
 	  const combinedData = calculateCollectedValues(groupedData)
 
+	//   --------------------------------------
+
+
     return (
+
+		// Graph styling/data connection------------------------
+
 		<div className="scatterplot">
 		<ScatterChart
-        width={500}
+        width={600}
         height={300}
         margin={{
           top: 5,
@@ -54,11 +74,13 @@ function Scatterplot1() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Scatter data={data} fill="#8884d8" line shape="cross" dataKey="value" />
+        <Scatter data={combinedData} fill="#8884d8" line shape="cross" dataKey="value" />
       </ScatterChart>	  
 		</div>
-	)
-}
+	);
+		// ------------------------------------------------------
+
+};
 		  
 export default Scatterplot1
 		  

@@ -1,6 +1,10 @@
+// Imports---------------------------------------------
 import React from 'react'
 import './Pie.css'
 import { Tooltip, PieChart, Pie } from 'recharts';
+// ----------------------------------------------------
+
+// Functions for setting up up new entries on the graph and adding to already existing data sources-----
 
 function groupDataByCloumnName(data) {
 	const groupedData = {};
@@ -23,21 +27,34 @@ function calculateCollectedValues(groupedData) {
 	}
 	return collectedData
 }
+// --------------------------------------------------
+
+
 
 		  
 function Pie1 () {
+
+	// Data for graph----------------------------
+
 	const data = [
-		{name: "Facebook", value: 20000000},
-		{name: "Instagram", value: 60000000},
-		{name: "Twitter", value: 15000000},
+		{name: "Sony", value: 30},
+		{name: "Microsoft", value: 23},
+		{name: "Nintendo", value: 43},
 	  ]
 
+	//   --------------------------------------
+
+	//   Values for graph--------------------------
 	  const groupedData = groupDataByCloumnName(data);
 	  const combinedData = calculateCollectedValues(groupedData)
+	// ---------------------------------------------
 
     return (
+
+		// Graph styling/data connection------------------------
+
 		<div className="Pie">
-		
+	
 			<PieChart width={500} height={300}>
 				<Pie
 				dataKey="value"
@@ -52,8 +69,10 @@ function Pie1 () {
 			<Tooltip />
 	  		</PieChart>		  
 		</div>
-	)
-}
+	);
+		// ------------------------------------------------------
+
+};
 		  
 export default Pie1
 		  
