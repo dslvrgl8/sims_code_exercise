@@ -6,49 +6,71 @@ import Line from './Line';
 import Bar from './Bar';
 
 function Navigation() {
-
-	// Admin functionality to turn off buttons-----------
   const [activeChart, setActiveChart] = useState('');
-  const [showPieButton] = useState(true);
-  const [showScatterplotButton] = useState(true);
-  const [showLineButton] = useState(true);
-  const [showBarButton] = useState(true);
-//   ----------------------------------
+  const [selectedGraph, setSelectedGraph] = useState('');
+  const [showPieButton, setShowPieButton] = useState(true);
+  const [showScatterplotButton, setShowScatterplotButton] = useState(true);
+  const [showLineButton, setShowLineButton] = useState(true);
+  const [showBarButton, setShowBarButton] = useState(true);
 
-  const handleButtonClick = (chart) => {
-	setActiveChart(chart);
+  const handleGraphSelection = (event) => {
+    const selectedGraph = event.target.value;
+    setSelectedGraph(selectedGraph);
+    setActiveChart(selectedGraph); // Immediately set the active chart
+    setShowPieButton(selectedGraph === 'Pie'); // Hide other graph options
+    setShowScatterplotButton(selectedGraph === 'Scatterplot');
+    setShowLineButton(selectedGraph === 'Line');
+    setShowBarButton(selectedGraph === 'Bar');
+  };
+
+  const handleBackButtonClick = () => {
+    setSelectedGraph(''); // Clear the selected graph
+    setShowPieButton(true); // Show all graph options again
+    setShowScatterplotButton(true);
+    setShowLineButton(true);
+    setShowBarButton(true);
+    setActiveChart(''); // Reset the active chart
   };
 
   return (
     <div className="navigation">
       <div>
-
-
-        {/* Buttons to switch to different graphs */}
+        {/* Control which graphs are visible */}
         {showPieButton && (
-          <button onClick={() => handleButtonClick('Pie')}>Pie Graph</button>
+          <button value="Pie" onClick={handleGraphSelection}>
+            Pie Graph
+          </button>
         )}
         {showScatterplotButton && (
-          <button onClick={() => handleButtonClick('Scatterplot')}>Scatterplot</button>
+          <button value="Scatterplot" onClick={handleGraphSelection}>
+            Scatterplot
+          </button>
         )}
         {showLineButton && (
-          <button onClick={() => handleButtonClick('Line')}>Line Graph</button>
+          <button value="Line" onClick={handleGraphSelection}>
+            Line Graph
+          </button>
         )}
-		{showBarButton && (
-			<button onClick={() => handleButtonClick('Bar')}>Bar Graph</button>
-		  )}
+        {showBarButton && (
+          <button value="Bar" onClick={handleGraphSelection}>
+            Bar Graph
+          </button>
+        )}
+
+        {/* Render active chart based on state */}
+        {activeChart === 'Pie' && <Pie />}
+        {activeChart === 'Scatterplot' && <Scatterplot />}
+        {activeChart === 'Line' && <Line />}
+        {activeChart === 'Bar' && <Bar />}
+
+        {/* Back button to reset visibility */}
+        {selectedGraph && <button onClick={handleBackButtonClick}>Back</button>}
       </div>
-
-
-      {/* Render active chart based on state */}
-      {activeChart === 'Pie' && <Pie />}
-      {activeChart === 'Scatterplot' && <Scatterplot />}
-      {activeChart === 'Line' && <Line />}
-	  {activeChart === 'Bar' && <Bar />}
     </div>
   );
 }
 
 export default Navigation;
+
 
 		  
